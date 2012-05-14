@@ -5,3 +5,48 @@ Migrating to CreateCategories (20120513133404)
   [1m[35m (87.2ms)[0m  CREATE TABLE `categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
   [1m[36m (31.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120513133404')[0m
   [1m[35m (0.3ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+  [1m[36m (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCategories (20120513133404)
+Migrating to DeviseCreateUsers (20120514160253)
+  [1m[35m (141.9ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `password_salt` varchar(255), `confirmation_token` varchar(255), `confirmed_at` datetime, `confirmation_sent_at` datetime, `unconfirmed_email` varchar(255), `failed_attempts` int(11) DEFAULT 0, `unlock_token` varchar(255), `locked_at` datetime, `authentication_token` varchar(255), `device_id` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (239.2ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35m (255.8ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)
+  [1m[36m (232.4ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_confirmation_token` ON `users` (`confirmation_token`)[0m
+  [1m[35m (222.7ms)[0m  CREATE UNIQUE INDEX `index_users_on_unlock_token` ON `users` (`unlock_token`)
+  [1m[36m (230.9ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_authentication_token` ON `users` (`authentication_token`)[0m
+  [1m[35m (64.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120514160253')
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCategories (20120513133404)
+Migrating to DeviseCreateUsers (20120514160253)
+Migrating to CreateLocations (20120514162822)
+  [1m[35m (145.6ms)[0m  CREATE TABLE `locations` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `latitude` float, `longitude` float, `street` varchar(255), `city` varchar(255), `state` varchar(255), `country` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (65.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120514162822')[0m
+  [1m[35m (0.3ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCategories (20120513133404)
+Migrating to DeviseCreateUsers (20120514160253)
+Migrating to CreateLocations (20120514162822)
+Migrating to AddPreferencesToUser (20120514163856)
+  [1m[35m (304.1ms)[0m  ALTER TABLE `users` ADD `preferences` text
+  [1m[36m (65.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120514163856')[0m
+  [1m[35m (0.3ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+  [1m[36m (1.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCategories (20120513133404)
+Migrating to DeviseCreateUsers (20120514160253)
+Migrating to CreateLocations (20120514162822)
+Migrating to AddPreferencesToUser (20120514163856)
+Migrating to AddLocationIdToUser (20120514164954)
+  [1m[35m (324.1ms)[0m  ALTER TABLE `users` ADD `location_id` int(11)
+  [1m[36m (40.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120514164954')[0m
+  [1m[35m (0.3ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCategories (20120513133404)
+Migrating to DeviseCreateUsers (20120514160253)
+Migrating to CreateLocations (20120514162822)
+Migrating to AddPreferencesToUser (20120514163856)
+Migrating to AddLocationIdToUser (20120514164954)
+Migrating to AddStatusToUser (20120514165811)
+  [1m[35m (261.7ms)[0m  ALTER TABLE `users` ADD `status` varchar(255)
+  [1m[36m (64.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120514165811')[0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 

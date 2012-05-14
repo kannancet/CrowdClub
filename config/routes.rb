@@ -1,9 +1,9 @@
 CrowdClub::Application.routes.draw do
   
-  root :to => 'dashboard#index'
-  match 'crowdclub/api/category/list' => 'category#dashboard_category_list', :via => :get, :as => :api_dashboard_category_list
-
-  
+  devise_scope :user do
+    match 'crowdclub/api/dashboard' => "dashboard#index" , :via => :get
+    match 'crowdclub/api/update/user_credentails' => "dashboard#update_user_credentials" , :via => :post
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

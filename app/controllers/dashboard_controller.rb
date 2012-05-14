@@ -1,13 +1,19 @@
-class DashboardController < ApplicationController
+class DashboardController < Devise::RegistrationsController
 
-  attr_accessor :device_id, :latitude, longitude
+  attr_accessor :device_id, :latitude, longitude, :email, :status, :auth_token
+  before_filter :verify_authenticity_token => , :only => [:update_user_credentials]
+  before_filter :collect_parameters
+  
 =begin
   This function is used to initialize the user params. 
 =end
-  def initialize
+  def collect_parameters
     @device_id = params[:device_id]
     @latitude = params[:latitude]
-    @longitude = params[:longitude]   
+    @longitude = params[:longitude]  
+    @email = params[:email]
+    @status = params[:status]
+    @auth_token = params[:auth_token]
   end
 
 =begin
@@ -15,16 +21,18 @@ class DashboardController < ApplicationController
 =end
   def index
     if device_id && latitude && longitude
-      account_login_response = parse_location_info_and_create_user_account
+      account_login_response, auth_token = parse_location_info_and_create_user_account
       render :status=>200,
-             :json=>{:Message=>"Successfully created the and accoubt for the user.",
+             :json=>{:Message=>"Account created successfully for the user.",
                      :Response => "Success",
-                     :Data => account_login_response}
+                     :Data => account_login_response,
+                     :AuthToken => auth_token }
     else
       render :status=>401,
              :json=>{:Message=>"The request must contain the user device id, latitude and longitude.",
                      :Response => "Fail",
-                     :Data => nil}
+                     :Data => nil,
+                     :AuthToken => nil}
     end
   end
 
@@ -33,20 +41,21 @@ class DashboardController < ApplicationController
 =end
   def parse_location_info_and_create_user_account
     location_id = google_reverse_coding(latitude,longitude)
-    user = User.find_by_name(device_id_of_subscriber)
+    user = User.find_by_device_id(device_id)
     if user
       user.update_attributes(:latitude => latitude.to_f , :longitude => longitude.to_f, :location_id => location_id)
       user.save!
-      return "Welcome to your Crowd Club !!!\n\nUser name: #{@user.name}."
+      return "Hi #{user.name}! Your location is updated.", user.authentication_token
     else
-      user = User.new(:name => device_id_of_subscriber,:latitude => latitude.to_f,:longitude => longitude.to_f, :location_id => location_id)
+      user = User.new(:device_id => device_id,:latitude => latitude.to_f,:longitude => longitude.to_f, :location_id => location_id, :password => device_id)
       user.save!
-      return "An account is created for you !!!\n\nUser name: #{@user.name}."
+      return "Welcome to CrowdClub! Please enter your email and status to continue.", user.authentication_token
     end
+    user
   end
 
 =begin
-  Convert the latitude and longitude to corresponding address
+  Convert the latitude and longitude to corresponding address.
 =end
   def google_reverse_coding(latitude,longitude)
     result = Geocoder.search("#{latitude},#{longitude}")
@@ -58,9 +67,28 @@ class DashboardController < ApplicationController
     if location_find
       return location_find.id
     else
-      location = Location.new(:street => street,:city => city,:state => state,:country => country)
+      location = Location.new(:street => street,:city => city,:state => state,:country => country, :latitude => latitude, :longitude => longitude)
       location.save!
       return location.id
     end
+  end
+  
+=begin
+  This function is used to update the user credentials like email and name. 
+=end
+  def update_user_credentials
+    if auth_token 
+      user = User.find_by_authentication_token(auth_token)
+      user.update_attributes!(:email => email, :status => status, :name => name)
+      render :status=>200,
+             :json=>{:Message=>"Updated user credentials successfully.",
+                     :Response => "Success",
+                     :Data => "Hi, #{user.name}, your profile is up-to-date."}
+    else
+      render :status=>401,
+             :json=>{:Message=>"The request must contain the user auth token.",
+                     :Response => "Fail",
+                     :Data => nil}
+    end   
   end
 end
