@@ -20,19 +20,26 @@ class DashboardController < Devise::RegistrationsController
   Create Login for new or login for existing user
 =end
   def index
-    if device_id && latitude && longitude
-      account_login_response, auth_token = parse_location_info_and_create_user_account
-      render :status=>200,
-             :json=>{:Message=>"Account created successfully for the user.",
-                     :Response => "Success",
-                     :Data => account_login_response,
-                     :AuthToken => auth_token }
-    else
+    begin
+      if device_id && latitude && longitude
+        account_login_response, auth_token = parse_location_info_and_create_user_account
+        render :status=>200,
+               :json=>{:Message=>"Account created successfully for the user.",
+                       :Response => "Success",
+                       :Data => account_login_response,
+                       :AuthToken => auth_token }
+      else
+        render :status=>401,
+               :json=>{:Message=>"The request must contain the user device id, latitude and longitude.",
+                       :Response => "Fail",
+                       :Data => nil,
+                       :AuthToken => nil}
+      end
+    rescue Exception => e
       render :status=>401,
-             :json=>{:Message=>"The request must contain the user device id, latitude and longitude.",
+             :json=>{:Message=>"Account creation failed.",
                      :Response => "Fail",
-                     :Data => nil,
-                     :AuthToken => nil}
+                     :Data => e.message}
     end
   end
 
@@ -73,22 +80,4 @@ class DashboardController < Devise::RegistrationsController
     end
   end
   
-=begin
-  This function is used to update the user credentials like email and name. 
-=end
-  def update_user_credentials
-    if auth_token 
-      user = User.find_by_authentication_token(auth_token)
-      user.update_attributes!(:email => email, :status => status, :name => name)
-      render :status=>200,
-             :json=>{:Message=>"Updated user credentials successfully.",
-                     :Response => "Success",
-                     :Data => "Hi, #{user.name}, your profile is up-to-date."}
-    else
-      render :status=>401,
-             :json=>{:Message=>"The request must contain the user auth token.",
-                     :Response => "Fail",
-                     :Data => nil}
-    end   
-  end
 end

@@ -8,7 +8,7 @@ if defined?(Bundler)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
-
+require 'yajl/json_gem'
 module CrowdClub
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

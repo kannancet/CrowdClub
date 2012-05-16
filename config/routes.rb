@@ -2,8 +2,15 @@ CrowdClub::Application.routes.draw do
   
   devise_scope :user do
     match 'crowdclub/api/dashboard' => "dashboard#index" , :via => :get
-    match 'crowdclub/api/update/user_credentails' => "dashboard#update_user_credentials" , :via => :post
   end
+  
+=begin
+  These routes define the user related data retreival. 
+=end
+   match 'crowdclub/api/get/user_data' => "me#get_user_data" , :via => :get
+   match 'crowdclub/api/update/user_data' => "me#update_user_data" , :via => :post
+   match 'crowdclub/api/update/image' => "me#update_image" , :via => :post
+   match '*a', :to => 'application#no_route_found'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
