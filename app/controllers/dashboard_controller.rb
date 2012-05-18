@@ -1,7 +1,6 @@
 class DashboardController < Devise::RegistrationsController
 
-  attr_accessor :device_id, :latitude, longitude, :email, :status, :auth_token
-  before_filter :verify_authenticity_token => , :only => [:update_user_credentials]
+  attr_accessor :device_id, :latitude, :longitude, :email, :status, :auth_token, :user_name, :user
   before_filter :collect_parameters
   
 =begin
@@ -9,11 +8,13 @@ class DashboardController < Devise::RegistrationsController
 =end
   def collect_parameters
     @device_id = params[:device_id]
+    @email = params[:email]
     @latitude = params[:latitude]
     @longitude = params[:longitude]  
-    @email = params[:email]
     @status = params[:status]
+    @user_name = params[:user_name]
     @auth_token = params[:auth_token]
+    @user
   end
 
 =begin
@@ -24,13 +25,13 @@ class DashboardController < Devise::RegistrationsController
       if device_id && latitude && longitude
         account_login_response, auth_token = parse_location_info_and_create_user_account
         render :status=>200,
-               :json=>{:Message=>"Account created successfully for the user.",
+               :json=>{:Message=> account_login_response,
                        :Response => "Success",
                        :Data => account_login_response,
                        :AuthToken => auth_token }
       else
         render :status=>401,
-               :json=>{:Message=>"The request must contain the user device id, latitude and longitude.",
+               :json=>{:Message=>"The request must contain the user device id, latitude, longitude.",
                        :Response => "Fail",
                        :Data => nil,
                        :AuthToken => nil}
@@ -47,37 +48,23 @@ class DashboardController < Devise::RegistrationsController
   Get the user location using Google Geo Coding and create location if not exist
 =end
   def parse_location_info_and_create_user_account
-    location_id = google_reverse_coding(latitude,longitude)
     user = User.find_by_device_id(device_id)
-    if user
-      user.update_attributes(:latitude => latitude.to_f , :longitude => longitude.to_f, :location_id => location_id)
-      user.save!
-      return "Hi #{user.name}! Your location is updated.", user.authentication_token
+    unless user
+      user = User.create!(:device_id => device_id, 
+                          :current_latitude => latitude.to_f, 
+                          :current_longitude => longitude.to_f,
+                          :password => email, 
+                          :user_name => user_name,
+                          :email => email, 
+                          :status => status)
     else
-      user = User.new(:device_id => device_id,:latitude => latitude.to_f,:longitude => longitude.to_f, :location_id => location_id, :password => device_id)
-      user.save!
-      return "Welcome to CrowdClub! Please enter your email and status to continue.", user.authentication_token
+      user.update_attributes!(:current_latitude => latitude.to_f,
+                              :current_longitude => longitude.to_f)
     end
-    user
+    user.ensure_authentication_token!
+    geo_location_response = ::Geolocation::Finder::Google.google_reverse_coding(user, latitude, longitude)
+    location_status = geo_location_response.nil? ? " Sorry! Unable to track location." : " Location tracked Successfully!"
+    return "Hi #{user.user_name}, Welcome to CrowdClub.#{location_status}", user.authentication_token
   end
 
-=begin
-  Convert the latitude and longitude to corresponding address.
-=end
-  def google_reverse_coding(latitude,longitude)
-    result = Geocoder.search("#{latitude},#{longitude}")
-    street = result.first.address.split(",")[0]
-    city = result.first.address.split(",")[1]
-    state = result.first.address.split(",")[2]
-    country = result.first.address.split(",")[3]
-    location_find = Location.find_by_street(street)
-    if location_find
-      return location_find.id
-    else
-      location = Location.new(:street => street,:city => city,:state => state,:country => country, :latitude => latitude, :longitude => longitude)
-      location.save!
-      return location.id
-    end
-  end
-  
 end

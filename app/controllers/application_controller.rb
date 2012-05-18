@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::Base
   #protect_from_forgery
-  
-      rescue_from Exception, :with => :render_error
-      rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
-      rescue_from ActionController::RoutingError, :with => :render_not_found
-      rescue_from ActionController::UnknownController, :with => :render_not_found
-      rescue_from AbstractController::ActionNotFound, :with => :render_not_found
+=begin
+  This defines functions to implement custom exception handling. 
+=end  
+      # rescue_from Exception, :with => :render_error
+      # rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
+      # rescue_from ActionController::RoutingError, :with => :render_not_found
+      # rescue_from ActionController::UnknownController, :with => :render_not_found
+      # rescue_from AbstractController::ActionNotFound, :with => :render_not_found
 =begin
   This function implements the verification of authentication token for giving access to access controlled apis.
   The input auth token should match logged in user auth token, else the system will reject authorisation.
@@ -35,10 +37,35 @@ class ApplicationController < ActionController::Base
     authenticity_token = params[:auth_token]
     device_id = params[:device_id]
     user = User.where(:authentication_token => authenticity_token, :device_id => device_id)
-    return (user.blank? ? false : user)
+    return user
   end
+
+=begin
+  This function is used for create a authentication token.
+  Used for creating auth token on user creation.
+=end   
+  def ensure_authentication_token!
+    reset_authentication_token! if authentication_token.blank?
+  end
+
+=begin
+  This function is used for resetting the authentication token. 
+=end  
+  def reset_authentication_token
+   self.authentication_token = self.class.authentication_token
+  end
+
+=begin
+  This function is used to implement auth token expiration. 
+=end  
+  def expire_auth_token_on_timeout
+    self.class.expire_auth_token_on_timeout
+  end
+
   
-  
+=begin
+  This implements custom exception handling. 
+=end  
   def render_not_found(exception)
     render :status=>404,
            :json=>{:Message=>"Page not found",
@@ -54,6 +81,7 @@ class ApplicationController < ActionController::Base
   end
   
   def no_route_found
+  p params.inspect
     render :status=>404,
            :json=>{:Message=>"Invalid API URL.This API is not defined.",
                    :Response => "Fail",

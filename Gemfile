@@ -26,7 +26,10 @@ gem 'devise'
 gem 'carrierwave'
 gem 'yajl-ruby'
 gem 'airbrake'
-
+gem 'geokit-rails3'
+gem 'geocoder'
+gem 'rest-client'
+gem 'hashie'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
