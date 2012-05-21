@@ -51,19 +51,14 @@ class DashboardController < Devise::RegistrationsController
     user = User.find_by_device_id(device_id)
     unless user
       user = User.create!(:device_id => device_id, 
-                          :current_latitude => latitude.to_f, 
-                          :current_longitude => longitude.to_f,
                           :password => email, 
                           :user_name => user_name,
                           :email => email, 
                           :status => status)
-    else
-      user.update_attributes!(:current_latitude => latitude.to_f,
-                              :current_longitude => longitude.to_f)
     end
     user.ensure_authentication_token!
     geo_location_response = ::Geolocation::Finder::Google.google_reverse_coding(user, latitude, longitude)
-    location_status = geo_location_response.nil? ? " Sorry! Unable to track location." : " Location tracked Successfully!"
+    location_status = geo_location_response.nil? ? " Hurray!You have explored a new location.Please add the location to your credit." : " Location tracked Successfully!"
     return "Hi #{user.user_name}, Welcome to CrowdClub.#{location_status}", user.authentication_token
   end
 

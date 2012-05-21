@@ -6,12 +6,20 @@ CrowdClub::Application.routes.draw do
   end
   
 =begin
-  These routes defines the user related data retreival. 
+  These routes defines the user related data retreival and updation. 
 =end
    match 'crowdclub/api/get/user_data' => "me#get_user_data" , :via => :get
-   match 'crowdclub/api/update/user_data' => "me#update_user_data" , :via => :post
-   match 'crowdclub/api/update/image' => "me#update_image" , :via => :post
-   
+   match 'crowdclub/api/get/user_image/:user_name' => "me#get_user_image" , :via => :get
+   match 'crowdclub/api/update/user_name_status' => "me#update_user_name_status" , :via => :post
+   match 'crowdclub/api/update/user_location' => "me#update_user_location" , :via => :post
+   match 'crowdclub/api/update/user_image' => "me#update_user_image" , :via => :post
+   match 'crowdclub/api/add/location' => "me#add_new_location" , :via => :post
+=begin
+  These routes define user feed creation and view apis.
+=end
+  match 'crowdclub/api/create/user_feed' => "feeds#create_user_feed" , :via => :post
+  match 'crowdclub/api/get/user_feed' => "feeds#get_user_feed" , :via => :get
+  match 'crowdclub/api/get/category_list' => "feeds#get_category_list" , :via => :get
 =begin
   These routes implements feed related activities.
 =end

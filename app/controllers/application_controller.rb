@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
   The input auth token should match logged in user auth token, else the system will reject authorisation.
 =end 
   def verify_authenticity_token
-    authenticity_token = params[:auth_token]
-    device_id = params[:device_id]
+    authenticity_token = params[:auth_token] ||= request.headers["auth_token"]
+    device_id = params[:device_id] ||= request.headers["device_id"]
     if authenticity_token.nil? or device_id.nil?
       render :status=>401,
              :json=>{:Message => "Auth Token and device id cannot be blank.",
@@ -29,14 +29,23 @@ class ApplicationController < ActionController::Base
        return true
     end
   end
+
+=begin
+  This function implements the conversion to UTF-8
+=end
+
+  def to_utf8 untrusted_string=""
+    ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
+    ic.iconv(untrusted_string + ' ')[0..-2]
+  end  
   
 =begin  config.consider_all_requests_local = false
   This function used to detect the current user. 
 =end
   def requested_user
-    authenticity_token = params[:auth_token]
-    device_id = params[:device_id]
-    user = User.where(:authentication_token => authenticity_token, :device_id => device_id)
+    authenticity_token = params[:auth_token] ||= request.headers["auth_token"]
+    device_id = params[:device_id] ||= request.headers["device_id"]
+    user = User.where(:authentication_token => authenticity_token, :device_id => device_id).first
     return user
   end
 

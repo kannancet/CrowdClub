@@ -1,0 +1,1 @@
+SERVER_DOMAIN_NAME = 'http://localhost:3000/'

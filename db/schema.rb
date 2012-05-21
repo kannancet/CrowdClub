@@ -10,12 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517123753) do
+ActiveRecord::Schema.define(:version => 20120521071532) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "feeds", :force => true do |t|
+    t.text     "comment"
+    t.text     "image"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "locations", :force => true do |t|
@@ -29,6 +39,11 @@ ActiveRecord::Schema.define(:version => 20120517123753) do
     t.datetime "updated_at", :null => false
     t.string   "address"
     t.integer  "user_id"
+  end
+
+  create_table "locations_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "location_id"
   end
 
   create_table "users", :force => true do |t|
@@ -60,6 +75,10 @@ ActiveRecord::Schema.define(:version => 20120517123753) do
     t.float    "current_latitude"
     t.float    "current_longitude"
     t.string   "user_name"
+    t.text     "image"
+    t.string   "image_content_type"
+    t.string   "image_name"
+    t.string   "image_url"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
