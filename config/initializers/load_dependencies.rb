@@ -1,1 +1,1 @@
-require 'lib/modules/geolocation.rb'
+require "#{Rails.root}/lib/modules/geolocation.rb"
