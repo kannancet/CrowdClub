@@ -90,7 +90,6 @@ class ApplicationController < ActionController::Base
   end
   
   def no_route_found
-  p params.inspect
     render :status=>404,
            :json=>{:Message=>"Invalid API URL.This API is not defined.",
                    :Response => "Fail",

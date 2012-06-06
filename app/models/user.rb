@@ -12,5 +12,10 @@ class User < ActiveRecord::Base
   serialize :image
   serialize :image_content_type
   serialize :image_name
-  
+  acts_as_mappable :default_units => :miles,
+                     :default_formula => :sphere,
+                     :lat_column_name => :current_latitude,
+                     :lng_column_name => :current_longitude
+  acts_as_follower
+  acts_as_followable
 end

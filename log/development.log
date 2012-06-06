@@ -8516,3 +8516,260 @@ Geokit is using the domain: localhost
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`authentication_token` = 'ApvR6NTXUnby3YjrVAsq' AND `users`.`device_id` = 'ertadwe12314' LIMIT 1[0m
 Sent file /home/kannan/Documents/planetapps/CrowdClub/Data/user_image/kannanre_1.jpeg (0.2ms)
 Completed 200 OK in 61ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:45:32 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:46:34 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:49:07 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:50:29 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:50:31 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:50:31 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:51:05 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:51:07 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:52:01 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:52:02 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:52:04 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download/1/getjar_app_icon.png" for 127.0.0.1 at Mon May 21 14:52:05 +0530 2012
+Processing by ApplicationController#no_route_found as PNG
+  Parameters: {"a"=>"appmall/api/vendor/image/download/1/getjar_app_icon"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download" for 127.0.0.1 at Mon May 21 14:53:09 +0530 2012
+Processing by ApplicationController#no_route_found as HTML
+  Parameters: {"a"=>"appmall/api/vendor/image/download"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download" for 127.0.0.1 at Mon May 21 14:53:12 +0530 2012
+Processing by ApplicationController#no_route_found as HTML
+  Parameters: {"a"=>"appmall/api/vendor/image/download"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download" for 127.0.0.1 at Mon May 21 14:53:13 +0530 2012
+Processing by ApplicationController#no_route_found as HTML
+  Parameters: {"a"=>"appmall/api/vendor/image/download"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/vendor/image/download" for 127.0.0.1 at Mon May 21 14:53:14 +0530 2012
+Processing by ApplicationController#no_route_found as HTML
+  Parameters: {"a"=>"appmall/api/vendor/image/download"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/category/list" for 127.0.0.1 at Mon May 21 14:53:52 +0530 2012
+Processing by ApplicationController#no_route_found as HTML
+  Parameters: {"a"=>"appmall/api/category/list"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/dashboard/category/list" for 127.0.0.1 at Mon May 21 14:54:19 +0530 2012
+Processing by ApplicationController#no_route_found as HTML
+  Parameters: {"a"=>"appmall/api/dashboard/category/list"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/appmall/api/dashboard/category/productlist?page=1&categoryid=all&feature=1,2,3&version=10&sort=Featured&filter=0" for 127.0.0.1 at Mon May 21 14:54:29 +0530 2012
+Processing by ApplicationController#no_route_found as HTML
+  Parameters: {"filter"=>"0", "version"=>"10", "feature"=>"1,2,3", "page"=>"1", "sort"=>"Featured", "a"=>"appmall/api/dashboard/category/productlist", "categoryid"=>"all"}
+Geokit is using the domain: localhost
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCategories (20120513133404)
+Migrating to DeviseCreateUsers (20120514160253)
+Migrating to CreateLocations (20120514162822)
+Migrating to AddPreferencesToUser (20120514163856)
+Migrating to AddLocationIdToUser (20120514164954)
+Migrating to AddStatusToUser (20120514165811)
+Migrating to AddCurrentLatitudeLongitudeToUser (20120517070736)
+Migrating to AddNameToUser (20120517072528)
+Migrating to AddUserNameToUser (20120517092036)
+Migrating to RemoveNameToUser (20120517093448)
+Migrating to AddAddressToUser (20120517122205)
+Migrating to RemoveAddressFromUser (20120517123511)
+Migrating to AddAddressToLocation (20120517123532)
+Migrating to AddUserIdToLocation (20120517123753)
+Migrating to AddImageToUser (20120518113203)
+Migrating to CreateFeeds (20120518170022)
+Migrating to AddImageContentTypeToUser (20120521060518)
+Migrating to AddImageUrlToUser (20120521071532)
+Migrating to ActsAsFollowerMigration (20120602192715)
+  [1m[35m (147.5ms)[0m  CREATE TABLE `follows` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `followable_id` int(11) NOT NULL, `followable_type` varchar(255) NOT NULL, `follower_id` int(11) NOT NULL, `follower_type` varchar(255) NOT NULL, `blocked` tinyint(1) DEFAULT 0 NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (255.3ms)[0m  [1mCREATE INDEX `fk_follows` ON `follows` (`follower_id`, `follower_type`)[0m
+  [1m[35m (273.7ms)[0m  CREATE INDEX `fk_followables` ON `follows` (`followable_id`, `followable_type`)
+  [1m[36m (48.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120602192715')[0m
+  [1m[35m (0.3ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+
+
+Started GET "/home/index" for 127.0.0.1 at 2012-06-03 01:02:09 +0530
+Processing by HomeController#index as HTML
+Geokit is using the domain: localhost
+  Rendered home/index.html.erb within layouts/application (4.2ms)
+Completed 500 Internal Server Error in 597ms
+
+ActionView::Template::Error (undefined local variable or method `app_name' for #<#<Class:0x00000003ed9150>:0x00000003e56b10>):
+    3: <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    4:   <head>
+    5:     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    6:     <title><%= app_name %></title>
+    7:   <% if @forum %>
+    8:     <%= auto_discovery_link_tag(:atom, :action => :show, :format => :atom, 
+    9:     :id => @forum.id ) %>
+  app/views/layouts/application.html.erb:6:in `_app_views_layouts_application_html_erb___1193434451492010406_31772840'
+
+
+
+
+Started GET "/home/show" for 127.0.0.1 at 2012-06-03 01:02:32 +0530
+Processing by HomeController#show as HTML
+Geokit is using the domain: localhost
+  Rendered home/show.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 419ms
+
+ActionView::Template::Error (undefined local variable or method `app_name' for #<#<Class:0x00000003ed9150>:0x00000003dcc8e8>):
+    3: <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    4:   <head>
+    5:     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    6:     <title><%= app_name %></title>
+    7:   <% if @forum %>
+    8:     <%= auto_discovery_link_tag(:atom, :action => :show, :format => :atom, 
+    9:     :id => @forum.id ) %>
+  app/views/layouts/application.html.erb:6:in `_app_views_layouts_application_html_erb___1193434451492010406_31772840'
+
+
+
+
+Started GET "/home/show" for 127.0.0.1 at 2012-06-03 01:04:30 +0530
+Processing by HomeController#show as HTML
+Geokit is using the domain: localhost
+  Rendered home/show.html.erb within layouts/application (2.2ms)
+Compiled jquery.js  (3ms)  (pid 3628)
+Compiled jquery-ui.js  (4ms)  (pid 3628)
+Compiled jquery_ujs.js  (0ms)  (pid 3628)
+Completed 500 Internal Server Error in 618ms
+
+ActionView::Template::Error (TypeError: Cannot call method 'write' of undefined
+    at /tmp/execjs20120603-3628-cefr4x.js:12:20
+    at /tmp/execjs20120603-3628-cefr4x.js:26:16
+    at /tmp/execjs20120603-3628-cefr4x.js:1:92
+    at Object.<anonymous> (/tmp/execjs20120603-3628-cefr4x.js:1:109)
+    at Module._loadContent (node.js:667:21)
+    at node.js:695:20
+    at node.js:304:23
+    at node.js:756:9
+
+  (in /home/kannan/Documents/planetapps/CrowdClub/app/assets/javascripts/buddies.js.coffee)):
+    16:                             "facebox.css" %>
+    17:     <%= javascript_include_tag "jquery.js", "jquery-ui.js", "jquery-fx.js", 
+    18:                                "jrails.js" %>
+    19:     <%= javascript_include_tag "jquery.collection-min.js", 
+    20:                                "jquery.bgiframe.js", "jquery.tooltip.pack.js",
+    21:                                "jquery.livequery.js",
+    22:                                "facebox.js", "application.js" %>
+  app/views/layouts/application.html.erb:19:in `_app_views_layouts_application_html_erb__2784268309780573912_36399040'
+
+
+
+
+Started GET "/home/show" for 127.0.0.1 at 2012-06-03 01:04:32 +0530
+Processing by HomeController#show as HTML
+Geokit is using the domain: localhost
+  Rendered home/show.html.erb within layouts/application (0.1ms)
+Completed 500 Internal Server Error in 198ms
+
+ActionView::Template::Error (TypeError: Cannot call method 'write' of undefined
+    at /tmp/execjs20120603-3628-1ynwd1x.js:12:20
+    at /tmp/execjs20120603-3628-1ynwd1x.js:26:16
+    at /tmp/execjs20120603-3628-1ynwd1x.js:1:92
+    at Object.<anonymous> (/tmp/execjs20120603-3628-1ynwd1x.js:1:109)
+    at Module._loadContent (node.js:667:21)
+    at node.js:695:20
+    at node.js:304:23
+    at node.js:756:9
+
+  (in /home/kannan/Documents/planetapps/CrowdClub/app/assets/javascripts/buddies.js.coffee)):
+    16:                             "facebox.css" %>
+    17:     <%= javascript_include_tag "jquery.js", "jquery-ui.js", "jquery-fx.js", 
+    18:                                "jrails.js" %>
+    19:     <%= javascript_include_tag "jquery.collection-min.js", 
+    20:                                "jquery.bgiframe.js", "jquery.tooltip.pack.js",
+    21:                                "jquery.livequery.js",
+    22:                                "facebox.js", "application.js" %>
+  app/views/layouts/application.html.erb:19:in `_app_views_layouts_application_html_erb__2784268309780573912_36399040'
+
+

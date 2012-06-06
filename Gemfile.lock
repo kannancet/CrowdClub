@@ -28,6 +28,7 @@ GEM
     activesupport (3.2.2)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    acts_as_follower (0.1.1)
     airbrake (3.0.9)
       activesupport
       builder
@@ -133,6 +134,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_follower
   airbrake
   carrierwave
   coffee-rails (~> 3.2.1)

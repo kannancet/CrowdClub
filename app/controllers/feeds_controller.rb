@@ -1,6 +1,6 @@
 class FeedsController < ApplicationController
 
-  attr_accessor :latitude, :longitude, :comment, :category
+  attr_accessor :latitude, :longitude, :comment, :category, :page, :proximity
   before_filter :verify_authenticity_token
   before_filter :collect_parameters
   
@@ -12,8 +12,10 @@ class FeedsController < ApplicationController
     @longitude = request.headers["longitude"]
     @comment = request.headers["comment"]
     @category = request.headers["category"]
+    @page = (params[:page]).blank? ? 1 : params[:page]
+    @proximity = (params[:proximity]).blank? 5 : params[:proximity]
   end
-  
+   
 =begin
   This function is used to implement the creation  of feeds by the user.
 =end
@@ -92,6 +94,30 @@ class FeedsController < ApplicationController
     rescue Exception => e
       render :status=>401,
              :json=>{:Message=>"Error while fetching categories.",
+                     :Response => "Fail",
+                     :Data => e.message}
+    end
+  end
+  
+=begin
+  This function is used to find the feeds near the location of the logged in User.
+=end
+  def find_feeds_near_location
+    results = []
+    begin
+      location = [requested_user.latitude, requested_user.longitude]
+      locations_nearby = Location.page(page).per(10).joins(:feeds).includes(:feeds).within(proximity, :origin => location)
+      locations_nearby.each do |loc|
+        results.push(Hashie::Mash.new(:Location => loc,
+                                      :Feeds => loc.feeds))
+      end
+      render :status=>200,
+             :json=>{:Message=>"Successfully fetched feeds near your location.",
+                     :Response => "Success",
+                     :Data => results
+    rescue Exception => e
+      render :status=>401,
+             :json=>{:Message=>"Oops! some thing went wrong while fetching feeds near you location.",
                      :Response => "Fail",
                      :Data => e.message}
     end

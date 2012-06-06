@@ -3,6 +3,8 @@ class DashboardController < Devise::RegistrationsController
   attr_accessor :device_id, :latitude, :longitude, :email, :status, :auth_token, :user_name, :user
   before_filter :collect_parameters
   
+  def show
+  end
 =begin
   This function is used to initialize the user params. 
 =end

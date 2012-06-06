@@ -31,6 +31,7 @@ gem 'geocoder'
 gem 'rest-client'
 gem 'hashie'
 gem 'kaminari'
+gem "acts_as_follower"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
