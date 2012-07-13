@@ -1,0 +1,30 @@
+<div class="level_2">
+	<div class="login">
+		<input   type="text" name="email" onblur="if (this.value == '') {this.value = 'Enter email ID';}" onfocus="if (this.value == 'Enter email ID') {this.value = '';}" value="Enter email ID"  class="input_txt" />
+		<input onblur="if (this.value == '') {this.value = '**********';}" onfocus="if (this.value == '**********') {this.value = '';}" value="**********" type="password" class="input_txt" />
+		<input type="button" class="input_btn" value="Login" />
+	</div>
+</div>
+<div class="container">
+	<div class="slide">
+		<div id="gamesHolder">
+			<div id="games">
+				<%= image_tag "slide.jpg", :alt => "Mini Ninjas"%>
+				<%= image_tag "slide2.jpg"%>
+				<%= image_tag "slide3.jpg"%>
+			</div>
+		</div>
+	</div>
+	<div class="signup">
+		<div class="signup_form">
+			<h1>Sign Up</h1>
+			<form id="form1" name="form1" method="post" action="">
+				<input name="textfield" type="text" class="sign_txt" id="textfield" onblur="if (this.value == '') {this.value = 'First Name *';}" onfocus="if (this.value == 'First Name *') {this.value = '';}" value="First Name *" />
+				<input name="textfield" type="text" class="sign_txt" id="textfield" onblur="if (this.value == '') {this.value = 'Last Name *';}" onfocus="if (this.value == 'Last Name *') {this.value = '';}" value="Last Name *"  />
+				<input name="textfield" type="text" class="sign_txt" id="textfield" onblur="if (this.value == '') {this.value = 'Contact Number *';}" onfocus="if (this.value == 'Contact Number *') {this.value = '';}" value="Contact Number *" />
+				<input name="textfield" type="text" class="sign_txt" id="textfield" onblur="if (this.value == '') {this.value = 'Email ID *';}" onfocus="if (this.value == 'Email ID *') {this.value = '';}" value="Email ID *" />
+				<input name="" type="submit" value="Signup" class="input_btn" title="SignUp" />
+			</form>
+		</div>
+	</div>
+</div>
