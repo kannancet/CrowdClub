@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-CrowdClub::Application.config.secret_token = '0c77521ac38890b4cf149915bd17d54fd7394c39f9aaba13d86cbbc09b4afedf198b10399bfc85bd96345cfe899970e1811883888ebe6b24827335fd0970f975'
+CrowdClub::Application.config.secret_token = '883757a1827c8e2438d8344fbf001a339fc3a142959136e58ef49c2871acd8cb43b95da0df98a3be9c8ee161b8a1a87908d8db6d9db7b07a72200939f7eace97'

@@ -24,19 +24,25 @@ class DashboardController < Devise::RegistrationsController
 =end
   def index
     begin
-      if device_id && latitude && longitude
-        account_login_response, auth_token = parse_location_info_and_create_user_account
-        render :status=>200,
-               :json=>{:Message=> account_login_response,
-                       :Response => "Success",
-                       :Data => account_login_response,
-                       :AuthToken => auth_token }
-      else
-        render :status=>401,
-               :json=>{:Message=>"The request must contain the user device id, latitude, longitude.",
-                       :Response => "Fail",
-                       :Data => nil,
-                       :AuthToken => nil}
+      respond_to do |format|
+        format.json {
+          if device_id && latitude && longitude
+            account_login_response, auth_token = parse_location_info_and_create_user_account
+            render :status=>200,
+                   :json=>{:Message=> account_login_response,
+                           :Response => "Success",
+                           :Data => account_login_response,
+                           :AuthToken => auth_token }
+          else
+            render :status=>401,
+                   :json=>{:Message=>"The request must contain the user device id, latitude, longitude.",
+                           :Response => "Fail",
+                           :Data => nil,
+                           :AuthToken => nil}
+          end
+        }
+        format.html {
+        }
       end
     rescue Exception => e
       render :status=>401,

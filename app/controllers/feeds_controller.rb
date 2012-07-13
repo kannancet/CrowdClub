@@ -13,7 +13,11 @@ class FeedsController < ApplicationController
     @comment = request.headers["comment"]
     @category = request.headers["category"]
     @page = (params[:page]).blank? ? 1 : params[:page]
-    @proximity = (params[:proximity]).blank? 5 : params[:proximity]
+    if params[:proximity].blank?
+      @proximity = 5
+    else
+      @proximity = params[:proximity]
+    end
   end
    
 =begin
@@ -106,7 +110,12 @@ class FeedsController < ApplicationController
     results = []
     begin
       location = [requested_user.latitude, requested_user.longitude]
-      locations_nearby = Location.page(page).per(10).joins(:feeds).includes(:feeds).within(proximity, :origin => location)
+      if category.blank?
+        locations_nearby = Location.page(page).per(10).joins(:feeds).includes(:feeds).within(proximity, :origin => location)
+      else
+        categ_id = Category.find_by_name(category).id
+        locations_nearby = Location.page(page).per(10).joins(:feeds => [:categories]).includes(:feeds).within(proximity, :origin => location).where(:category_id => categ_id)
+      end
       locations_nearby.each do |loc|
         results.push(Hashie::Mash.new(:Location => loc,
                                       :Feeds => loc.feeds))
@@ -114,7 +123,7 @@ class FeedsController < ApplicationController
       render :status=>200,
              :json=>{:Message=>"Successfully fetched feeds near your location.",
                      :Response => "Success",
-                     :Data => results
+                     :Data => results}
     rescue Exception => e
       render :status=>401,
              :json=>{:Message=>"Oops! some thing went wrong while fetching feeds near you location.",
@@ -122,4 +131,5 @@ class FeedsController < ApplicationController
                      :Data => e.message}
     end
   end
+  
 end

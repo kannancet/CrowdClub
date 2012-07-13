@@ -8,7 +8,7 @@ CrowdClub::Application.routes.draw do
 
   devise_for :users, :controllers => {:dashboard => "dashboard"}
   devise_scope :user do
-    match 'crowdclub/api/dashboard' => "dashboard#index" , :via => :post
+    match 'crowdclub/api/dashboard' => "dashboard#index" ,:via => [:get, :post], :as => :user_dashboard
   end
   
 =begin
@@ -40,7 +40,7 @@ CrowdClub::Application.routes.draw do
 =begin
   These routes implements feed related activities.
 =end
-   match '*a', :to => 'application#no_route_found'
+   #match '*a', :to => 'application#no_route_found'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -95,6 +95,6 @@ CrowdClub::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  match ':controller(/:action(/:id))(.:format)'
   #root :to => 'dashboard#show'
 end

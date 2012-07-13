@@ -89,11 +89,11 @@ class ApplicationController < ActionController::Base
                    :Data => exception.message}
   end
   
-  def no_route_found
-    render :status=>404,
-           :json=>{:Message=>"Invalid API URL.This API is not defined.",
-                   :Response => "Fail",
-                   :Data => nil}  
-  end
+  # def no_route_found
+    # render :status=>404,
+           # :json=>{:Message=>"Invalid API URL.This API is not defined.",
+                   # :Response => "Fail",
+                   # :Data => nil}  
+  # end
 
 end
