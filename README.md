@@ -4,8 +4,10 @@ Welcome to Stockman! Stockman is a command line tool to help you calculate your 
 
 ## Solution - How to run the program ?
 Go to the root folder:
-  $ cd stockman
-  $ bundle install
+```ruby
+cd stockman
+bundle install
+```
 
 Start the stockman:
   ```ruby
